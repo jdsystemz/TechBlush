@@ -58,6 +58,16 @@ price:49,
 rating:5,
 stock:7,
 image:"https://img.freepik.com/premium-photo/clay-task-lamp-pastel_773922-68325.jpg"
+},
+{
+id:7,
+badge:"NEW",
+name:"Pink Office Chair",
+category:"Accessory",
+price:99,
+rating:5,
+stock:8,
+image:"https://mobileimages.lowes.com/productimages/e5d42b99-8130-4060-8937-6123520f0852/61391106.jpg?size=pdhism"
 }
 ];
 
