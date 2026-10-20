@@ -2,8 +2,8 @@ const products = [
 {
 id:1,
 badge:"BESTSELLER",
-name:"Pink Mechanical Keyboard",
-category:"Keyboard",
+name:"Mechanical Keyboard",
+category:"Accessory",
 price:79,
 rating:5,
 stock:5,
@@ -12,22 +12,22 @@ image:"https://www.gravastar.com/cdn/shop/files/2_8e9d7480-575d-420a-81ab-1e1687
 {
 id:2,
 badge:"NEW",
-name:"Lavender Mouse",
+name:"Mouse",
 category:"Accessory",
 price:39,
 rating:4,
 stock:3,
-image:"https://m.media-amazon.com/images/I/61PxscUq6uL._AC_SL1500_.jpg"
+image:"https://img.drz.lazcdn.com/static/pk/p/d4e56361cf0b654244ffaaa0093d2e1f.jpg_720x720q80.jpg"
 },
 {
 id:3,
 badge:"HOT",
-name:"RGB USB Hub",
+name:"USB Hub",
 category:"Accessory",
 price:29,
 rating:5,
 stock:8,
-image:"https://static.wixstatic.com/media/695b2a_7d2371f0da924cac9f6b16a8f9f68fd4~mv2.png"
+image:"https://m.media-amazon.com/images/I/61moMp4UYdL._AC_.jpg"
 },
 {
 id:4,
@@ -62,12 +62,72 @@ image:"https://img.freepik.com/premium-photo/clay-task-lamp-pastel_773922-68325.
 {
 id:7,
 badge:"NEW",
-name:"Pink Office Chair",
+name:"Office Chair",
 category:"Accessory",
 price:99,
 rating:5,
 stock:8,
 image:"https://mobileimages.lowes.com/productimages/e5d42b99-8130-4060-8937-6123520f0852/61391106.jpg?size=pdhism"
+},
+{
+id:8,
+badge:"NEW",
+name:"Mouse Pad",
+category:"Accessory",
+price:19,
+rating:5,
+stock:25,
+image:"https://img.ltwebstatic.com/images3_spmp/2023/12/18/20/17029102438a73128b759a4b0e7f9d93401d071ca3_thumbnail_900x.webp"
+},
+{
+id:9,
+badge:"HOT",
+name:"Monitor",
+category:"Electronics",
+price:125,
+rating:5,
+stock:5,
+image:"https://tse4.mm.bing.net/th/id/OIP.LBtBmGbUiIiCvWlpK9l31AHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+},
+{
+id:10,
+badge:"TRENDING",
+name:"Laptop",
+category:"Electronics",
+price:1299,
+rating:5,
+stock:5,
+image:"https://i.pinimg.com/originals/5f/d4/b4/5fd4b4e1f399c1cd224fce65d5887646.jpg"
+},
+{
+id:11,
+badge:"HOT",
+name:"Laptop Stand",
+category:"Accessories",
+price:199,
+rating:5,
+stock:10,
+image:"https://i5.walmartimages.com/seo/Laptop-Holder-Silicone-PP-and-ABS-Foldable-8-Gears-Adjustable-Portable-Laptop-Cooling-Stand-for-Home-Working-Pink_05b810b0-7511-4137-a5a3-62eaab74ebeb.7cd552dface4daee1f1ec7a651ef2772.jpeg"
+},
+{
+id:12,
+badge:"NEW",
+name:"Dual Monitor Arm Stand",
+category:"Accessories",
+price:199,
+rating:5,
+stock:12,
+image:"https://i5.walmartimages.com/seo/Alzare-Neo-Duo-Gas-Spring-Monitor-Arm-Pink_d2ce919a-1fea-41b3-afd0-c570b9ea2634.c4249829814cd9f6e8e3b54e2acc5a3a.jpeg"
+},
+{
+id:13,
+badge:"HOT",
+name:"Gaming PC",
+category:"Electronics",
+price:999,
+rating:5,
+stock:3,
+image:"https://cdn.avadirect.com/blog/blog/wp-content/uploads/2025/08/pink-gaming-pc-build.jpg"
 }
 ];
 
@@ -329,6 +389,25 @@ document
     "change",
     renderProducts
 );
+
+function toggleCart(){
+
+    const cart =
+    document.querySelector(".cart-sidebar");
+
+    cart.classList.toggle("cart-collapsed");
+
+    const btn =
+    document.querySelector(".cart-toggle");
+
+    if(cart.classList.contains("cart-collapsed")){
+        btn.innerHTML = "🛒";
+    }else{
+        btn.innerHTML = "✕";
+    }
+
+}
+
 
 renderProducts();
 updateCart();
