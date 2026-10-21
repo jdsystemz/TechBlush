@@ -5,7 +5,7 @@ badge:"BESTSELLER",
 name:"Mechanical Keyboard",
 description:"Cute pastel mechanical keyboard with RGB effects.",
 category:"Accessory",
-price:79,
+price:899,
 rating:5,
 stock:5,
 image:"https://www.gravastar.com/cdn/shop/files/2_8e9d7480-575d-420a-81ab-1e1687db85cc.webp?v=1742546105&width=1920"
@@ -16,7 +16,7 @@ badge:"NEW",
 name:"Mouse",
 description:"Cute pastel mouse with RGB effects.",
 category:"Accessory",
-price:39,
+price:399,
 rating:4,
 stock:3,
 image:"https://img.drz.lazcdn.com/static/pk/p/d4e56361cf0b654244ffaaa0093d2e1f.jpg_720x720q80.jpg"
@@ -27,7 +27,7 @@ badge:"HOT",
 name:"USB Hub",
 description:"Cute pastel USB hub with RGB effects.",
 category:"Accessory",
-price:29,
+price:249,
 rating:5,
 stock:8,
 image:"https://m.media-amazon.com/images/I/61moMp4UYdL._AC_.jpg"
@@ -38,7 +38,7 @@ badge:"SALE",
 name:"Bluetooth Headset",
 description:"Cute pastel Bluetooth headset with RGB effects.",
 category:"Electronics",
-price:99,
+price:349,
 rating:5,
 stock:2,
 image:"https://down-ph.img.susercontent.com/file/7e12fcacb282df73115a3187c37033f8"
@@ -49,7 +49,7 @@ badge:"NEW",
 name:"Webcam Pro",
 description:"Cute pastel webcam with RGB effects.",
 category:"Electronics",
-price:69,
+price:250,
 rating:4,
 stock:4,
 image:"https://pccaus.com/storage/media/OWbf11VcameLBAEGFhgLT2leVzJQN4CeqjDhAnYm.jpeg"
@@ -60,7 +60,7 @@ badge:"TRENDING",
 name:"Pastel Desk Lamp",
 description:"Cute pastel desk lamp with RGB effects.",
 category:"Accessory",
-price:49,
+price:300,
 rating:5,
 stock:7,
 image:"https://img.freepik.com/premium-photo/clay-task-lamp-pastel_773922-68325.jpg"
@@ -71,7 +71,7 @@ badge:"NEW",
 name:"Office Chair",
 description:"Cute pastel office chair with RGB effects.",
 category:"Accessory",
-price:99,
+price:1295,
 rating:5,
 stock:8,
 image:"https://mobileimages.lowes.com/productimages/e5d42b99-8130-4060-8937-6123520f0852/61391106.jpg?size=pdhism"
@@ -82,7 +82,7 @@ badge:"NEW",
 name:"Mouse Pad",
 description:"Cute pastel mouse pad with RGB effects.",
 category:"Accessory",
-price:19,
+price:99,
 rating:5,
 stock:25,
 image:"https://img.ltwebstatic.com/images3_spmp/2023/12/18/20/17029102438a73128b759a4b0e7f9d93401d071ca3_thumbnail_900x.webp"
@@ -93,7 +93,7 @@ badge:"HOT",
 name:"Monitor",
 description:"Cute pastel monitor with RGB effects.",
 category:"Electronics",
-price:125,
+price:2400,
 rating:5,
 stock:5,
 image:"https://tse4.mm.bing.net/th/id/OIP.LBtBmGbUiIiCvWlpK9l31AHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
@@ -104,7 +104,7 @@ badge:"TRENDING",
 name:"Laptop",
 description:"Cute pastel laptop with RGB effects.",
 category:"Electronics",
-price:1299,
+price:45999,
 rating:5,
 stock:5,
 image:"https://i.pinimg.com/originals/5f/d4/b4/5fd4b4e1f399c1cd224fce65d5887646.jpg"
@@ -115,7 +115,7 @@ badge:"HOT",
 name:"Laptop Stand",
 description:"Cute pastel laptop stand with RGB effects.",
 category:"Accessories",
-price:199,
+price:500,
 rating:5,
 stock:10,
 image:"https://i5.walmartimages.com/seo/Laptop-Holder-Silicone-PP-and-ABS-Foldable-8-Gears-Adjustable-Portable-Laptop-Cooling-Stand-for-Home-Working-Pink_05b810b0-7511-4137-a5a3-62eaab74ebeb.7cd552dface4daee1f1ec7a651ef2772.jpeg"
@@ -126,7 +126,7 @@ badge:"NEW",
 name:"Dual Monitor Arm Stand",
 description:"Cute pastel dual monitor arm stand with RGB effects.",
 category:"Accessories",
-price:199,
+price:799,
 rating:5,
 stock:12,
 image:"https://i5.walmartimages.com/seo/Alzare-Neo-Duo-Gas-Spring-Monitor-Arm-Pink_d2ce919a-1fea-41b3-afd0-c570b9ea2634.c4249829814cd9f6e8e3b54e2acc5a3a.jpeg"
@@ -137,7 +137,7 @@ badge:"HOT",
 name:"Gaming PC",
 description:"Cute pastel gaming PC with RGB effects.",
 category:"Electronics",
-price:999,
+price:21000,
 rating:5,
 stock:3,
 image:"https://cdn.avadirect.com/blog/blog/wp-content/uploads/2025/08/pink-gaming-pc-build.jpg"
@@ -156,24 +156,36 @@ function applyPromo(){
 
     const code =
     document.getElementById("promoCode").value;
-
     if(code === "PINK10"){
-
         discount = 10;
-
         showToast(
             "10% discount applied!"
         );
-
         updateCart();
-
     }else{
-
         showToast(
             "Invalid promo code"
         );
-
     }
+}
+
+function applyCheckoutPromo(){
+    const code =
+    document.getElementById(
+        "checkoutPromoCode"
+    ).value;
+    if(code === "PINK10"){
+        discount = 10;
+        showToast(
+            "10% discount applied!"
+        );
+    }else{
+        discount = 0;
+        showToast(
+            "Invalid promo code"
+        );
+    }
+    openCheckout();
 }
 
 const productsContainer =
@@ -265,7 +277,7 @@ function renderProducts(){
         </div>
 
         <div class="price">
-        $${product.price}
+        ₱${product.price}
         </div>
 
         <div class="actions">
@@ -375,7 +387,7 @@ function openModal(id){
     document.getElementById(
         "modalPrice"
     ).textContent =
-    "$" +
+    "₱" +
     product.price;
 
     document.getElementById(
@@ -428,6 +440,202 @@ function closeModal(){
 
 }
 
+function openCheckout(){
+
+    if(
+        Object.keys(cart).length === 0
+    ){
+        showToast(
+            "🛒 Cart is empty"
+        );
+        return;
+    }
+
+    let subtotal = 0;
+    let itemCount = 0;
+
+    let itemsHTML = "";
+
+    products.forEach(product => {
+
+        const qty =
+        cart[product.id];
+
+        if(qty){
+            subtotal +=
+
+            product.price * qty;
+
+            itemCount += qty;
+
+            itemsHTML += `
+            <div class="checkout-item">
+                <div class="checkout-top">
+                    <strong>
+                        ${product.name}
+                    </strong>
+
+                    <strong>
+                        ₱${(product.price * qty).toFixed(2)}
+                    </strong>
+                </div>
+
+                <div class="checkout-bottom">
+                    ₱${product.price}
+                    ×
+                    ${qty}
+                </div>
+
+                <div class="checkout-controls">
+                    <button
+                        onclick="checkoutDecrease(${product.id})"
+                    >
+                        −
+                    </button>
+                    <span>
+                        ${qty}
+                    </span>
+                    <button
+                        onclick="checkoutIncrease(${product.id})"
+                    >
+                        +
+                    </button>
+                    <button
+                        class="remove-btn"
+                        onclick="checkoutRemove(${product.id})"
+                    >
+                        Remove
+                    </button>
+                </div>
+            </div>
+            `;
+        }
+
+    });
+
+    const total =
+    subtotal -
+    (subtotal * discount / 100);
+
+    document.getElementById(
+        "checkoutItems"
+    ).innerHTML =
+    itemsHTML;
+
+    document.getElementById(
+        "checkoutCount"
+    ).textContent =
+    itemCount;
+
+    document.getElementById(
+        "checkoutSubtotal"
+    ).textContent =
+    subtotal.toFixed(2);
+
+    document.getElementById(
+        "checkoutDiscount"
+    ).textContent =
+    discount;
+
+    document.getElementById(
+        "checkoutTotal"
+    ).textContent =
+    total.toFixed(2);
+
+    document.getElementById(
+        "checkoutPromoCode"
+    ).value =
+    document.getElementById(
+        "promoCode"
+    ).value;
+
+    const savings =
+    subtotal * discount / 100;
+
+    document.getElementById(
+        "checkoutSavings"
+    ).textContent =
+    savings.toFixed(2);
+
+    document.getElementById(
+        "checkoutModal"
+    ).style.display =
+    "flex";
+}
+
+function closeCheckout(){
+
+    document.getElementById(
+        "checkoutModal"
+    ).style.display =
+    "none";
+}
+
+function confirmOrder(){
+    cart = {};
+    localStorage.removeItem(
+        "cart"
+    );
+    updateCart();
+    closeCheckout();
+    const payment =
+    document.querySelector(
+        'input[name="payment"]:checked'
+    ).value;
+
+    showToast(
+        `Order placed using ${payment.toUpperCase()} 🎀`
+    );
+}
+
+function checkoutIncrease(id){
+    cart[id] = (cart[id] || 0) + 1;
+    saveData();
+    updateCart();
+    openCheckout(); 
+}
+
+function checkoutDecrease(id){
+
+    cart[id]--;
+
+    if(cart[id] <= 0){
+        delete cart[id];
+    }
+
+    saveData();
+    updateCart();
+
+    if(
+        Object.keys(cart).length === 0
+    ){
+        closeCheckout();
+        showToast(
+            "🛒 Cart is empty"
+        );
+        return;
+    }
+    openCheckout();
+}
+
+function checkoutRemove(id){
+
+    delete cart[id];
+    saveData();
+    updateCart();
+
+    if(
+        Object.keys(cart).length === 0
+    ){
+        closeCheckout();
+        showToast(
+            "🛒 Cart is empty"
+        );
+        return;
+    }
+    openCheckout();
+}
+
 function updateCart(){
 
     const cartItems =
@@ -463,7 +671,7 @@ function updateCart(){
 
                 <br>
 
-                $${product.price}
+                ₱${product.price}
 
             </div>
 
@@ -542,13 +750,29 @@ renderProducts
 );
 
 window.onclick = function(event){
-    const modal =
+
+    const productModal =
     document.getElementById(
         "productModal"
     );
-    if(event.target === modal){
+
+    const checkoutModal =
+    document.getElementById(
+        "checkoutModal"
+    );
+
+    if(
+        event.target === productModal
+    ){
         closeModal();
     }
+
+    if(
+        event.target === checkoutModal
+    ){
+        closeCheckout();
+    }
+
 }
 
 function showToast(message){
