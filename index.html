@@ -97,9 +97,12 @@
         </div>
 
         <div class="cart-footer">
-            <h3>Total: $<span id="total">0</span></h3>
+            <h3>Total: ₱<span id="total">0</span></h3>
 
-            <button class="checkout">
+            <button
+                class="checkout"
+                onclick="openCheckout()"
+            >
                 Checkout
             </button>
         </div>
@@ -151,6 +154,145 @@
         >
             Add To Cart
         </button>
+    </div>
+</div>
+
+<div id="checkoutModal" class="modal">
+    <div class="modal-content">
+        <span
+            class="close-modal"
+            onclick="closeCheckout()"
+        >
+            ✕
+        </span>
+        <h2>🎀 Order Summary</h2>
+        <div class="checkout-layout">
+            <div class="checkout-left">
+                <h3 class="checkout-items-title">
+                    Cart Items
+                </h3>
+            <div id="checkoutItems"></div>
+        </div>
+
+            <div class="checkout-right">
+                <div class="checkout-summary">
+
+                    <h4>Order Details</h4>
+
+                    <div class="summary-row">
+                        <span>Items</span>
+                        <span id="checkoutCount"></span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span>₱<span id="checkoutSubtotal"></span></span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>Discount</span>
+                        <span><span id="checkoutDiscount"></span>%</span>
+                    </div>
+
+                    <div class="summary-row">
+                        <span>You Saved</span>
+                        <span>₱<span id="checkoutSavings"></span></span>
+                    </div>
+                </div>
+
+                <div class="checkout-info">
+                    <div>
+                        🚚 Free Shipping
+                    </div>
+                    <div>
+                        📦 Ships in 1–2 Days
+                    </div>
+                    <div>
+                        🔒 Secure Checkout
+                    </div>
+                    <div>
+                        🔄 Easy Returns
+                    </div>
+                </div>
+                
+                <div class="checkout-total">
+                    <div class="label">
+                        TOTAL
+                    </div>
+                    <div class="amount">
+                        ₱
+                        <span id="checkoutTotal"></span>
+                    </div>
+                </div>
+
+                <div class="delivery-estimate">
+                    🎁 Estimated Delivery
+                    <strong>
+                        Nov 22 - Nov 24
+                    </strong>
+                </div>
+
+                <div class="payment-methods">
+
+                    <h4>Payment Method</h4>
+
+                    <label class="payment-option">
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="cod"
+                            checked
+                        >
+                        <span>Cash on Delivery</span>
+                    </label>
+
+                    <label class="payment-option">
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="gcash"
+                        >
+                        <span>GCash</span>
+                    </label>
+
+                    <label class="payment-option">
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="maya"
+                        >
+                        <span>Maya</span>
+                    </label>
+                    <label class="payment-option">
+                        <input
+                            type="radio"
+                            name="payment"
+                            value="card"
+                        >
+                        <span>Credit / Debit Card</span>
+                    </label>
+                </div>
+
+                <div class="checkout-promo">
+                    <input
+                        id="checkoutPromoCode"
+                        placeholder="Promo Code"
+                    >
+                    <button
+                        onclick="applyCheckoutPromo()"
+                    >
+                        Apply
+                    </button>
+                </div>
+
+                <button
+                    class="buy"
+                    onclick="confirmOrder()"
+                >
+                    Confirm Order
+                </button>
+            </div>
+        </div>
     </div>
 </div>
 
