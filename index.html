@@ -15,7 +15,7 @@
 
     <div class="header-right">
         <div class="wishlist-counter">
-            ❤️ <span id="wishlistCount">0</span>
+            🩷 <span id="wishlistCount">0</span>
         </div>
 
         <div class="cart-button">
@@ -126,6 +126,35 @@
 </div>
 -->
 
+
+<div id="productModal" class="modal">
+    <div class="modal-content">
+        <span
+            class="close-modal"
+            onclick="closeModal()"
+        >
+            ✕
+        </span>
+        <img id="modalImage">
+        <h2 id="modalName"></h2>
+        <p id="modalDescription"></p>
+        <div class="modal-details">
+            <div id="modalCategory"></div>
+            <div id="modalRating"></div>
+            <div id="modalStock"></div>
+        </div>
+
+        <div id="modalPrice"></div>
+        <button
+            id="modalCartBtn"
+            class="buy"
+        >
+            Add To Cart
+        </button>
+    </div>
+</div>
+
+<div id="toast" class="toast"></div>
 
 <script src="script.js"></script>
 
