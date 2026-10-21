@@ -3,6 +3,7 @@ const products = [
 id:1,
 badge:"BESTSELLER",
 name:"Mechanical Keyboard",
+description:"Cute pastel mechanical keyboard with RGB effects.",
 category:"Accessory",
 price:79,
 rating:5,
@@ -13,6 +14,7 @@ image:"https://www.gravastar.com/cdn/shop/files/2_8e9d7480-575d-420a-81ab-1e1687
 id:2,
 badge:"NEW",
 name:"Mouse",
+description:"Cute pastel mouse with RGB effects.",
 category:"Accessory",
 price:39,
 rating:4,
@@ -23,6 +25,7 @@ image:"https://img.drz.lazcdn.com/static/pk/p/d4e56361cf0b654244ffaaa0093d2e1f.j
 id:3,
 badge:"HOT",
 name:"USB Hub",
+description:"Cute pastel USB hub with RGB effects.",
 category:"Accessory",
 price:29,
 rating:5,
@@ -33,6 +36,7 @@ image:"https://m.media-amazon.com/images/I/61moMp4UYdL._AC_.jpg"
 id:4,
 badge:"SALE",
 name:"Bluetooth Headset",
+description:"Cute pastel Bluetooth headset with RGB effects.",
 category:"Electronics",
 price:99,
 rating:5,
@@ -43,6 +47,7 @@ image:"https://down-ph.img.susercontent.com/file/7e12fcacb282df73115a3187c37033f
 id:5,
 badge:"NEW",
 name:"Webcam Pro",
+description:"Cute pastel webcam with RGB effects.",
 category:"Electronics",
 price:69,
 rating:4,
@@ -53,6 +58,7 @@ image:"https://pccaus.com/storage/media/OWbf11VcameLBAEGFhgLT2leVzJQN4CeqjDhAnYm
 id:6,
 badge:"TRENDING",
 name:"Pastel Desk Lamp",
+description:"Cute pastel desk lamp with RGB effects.",
 category:"Accessory",
 price:49,
 rating:5,
@@ -63,6 +69,7 @@ image:"https://img.freepik.com/premium-photo/clay-task-lamp-pastel_773922-68325.
 id:7,
 badge:"NEW",
 name:"Office Chair",
+description:"Cute pastel office chair with RGB effects.",
 category:"Accessory",
 price:99,
 rating:5,
@@ -73,6 +80,7 @@ image:"https://mobileimages.lowes.com/productimages/e5d42b99-8130-4060-8937-6123
 id:8,
 badge:"NEW",
 name:"Mouse Pad",
+description:"Cute pastel mouse pad with RGB effects.",
 category:"Accessory",
 price:19,
 rating:5,
@@ -83,6 +91,7 @@ image:"https://img.ltwebstatic.com/images3_spmp/2023/12/18/20/17029102438a73128b
 id:9,
 badge:"HOT",
 name:"Monitor",
+description:"Cute pastel monitor with RGB effects.",
 category:"Electronics",
 price:125,
 rating:5,
@@ -93,6 +102,7 @@ image:"https://tse4.mm.bing.net/th/id/OIP.LBtBmGbUiIiCvWlpK9l31AHaHa?r=0&rs=1&pi
 id:10,
 badge:"TRENDING",
 name:"Laptop",
+description:"Cute pastel laptop with RGB effects.",
 category:"Electronics",
 price:1299,
 rating:5,
@@ -103,6 +113,7 @@ image:"https://i.pinimg.com/originals/5f/d4/b4/5fd4b4e1f399c1cd224fce65d5887646.
 id:11,
 badge:"HOT",
 name:"Laptop Stand",
+description:"Cute pastel laptop stand with RGB effects.",
 category:"Accessories",
 price:199,
 rating:5,
@@ -113,6 +124,7 @@ image:"https://i5.walmartimages.com/seo/Laptop-Holder-Silicone-PP-and-ABS-Foldab
 id:12,
 badge:"NEW",
 name:"Dual Monitor Arm Stand",
+description:"Cute pastel dual monitor arm stand with RGB effects.",
 category:"Accessories",
 price:199,
 rating:5,
@@ -123,6 +135,7 @@ image:"https://i5.walmartimages.com/seo/Alzare-Neo-Duo-Gas-Spring-Monitor-Arm-Pi
 id:13,
 badge:"HOT",
 name:"Gaming PC",
+description:"Cute pastel gaming PC with RGB effects.",
 category:"Electronics",
 price:999,
 rating:5,
@@ -148,13 +161,17 @@ function applyPromo(){
 
         discount = 10;
 
-        alert("10% discount applied!");
+        showToast(
+            "10% discount applied!"
+        );
 
         updateCart();
 
     }else{
 
-        alert("Invalid promo code");
+        showToast(
+            "Invalid promo code"
+        );
 
     }
 }
@@ -225,7 +242,11 @@ function renderProducts(){
         card.innerHTML = `
         <div class="badge">${product.badge}</div>
 
-        <img src="${product.image}">
+        <img
+            src="${product.image}"
+            onclick="openModal(${product.id})"
+            style="cursor:pointer"
+        >
 
         <div class="content">
 
@@ -258,7 +279,7 @@ function renderProducts(){
         <button
         class="wishlist"
         onclick="toggleWishlist(${product.id})">
-        ${wishlist.includes(product.id) ? "❤️" : "🤍"}
+        ${wishlist.includes(product.id) ? "🩷" : "🤍"}
         </button>
 
         </div>
@@ -277,6 +298,15 @@ function addToCart(id){
 
     saveData();
     updateCart();
+
+    const product =
+    products.find(
+        p => p.id === id
+    );
+
+    showToast(
+        `${product.name} added to cart`
+    );
 }
 
 function decreaseCart(id){
@@ -306,6 +336,96 @@ function toggleWishlist(id){
 
     document.getElementById("wishlistCount").textContent =
     wishlist.length;
+}
+
+function openModal(id){
+
+    const product =
+    products.find(
+        p => p.id === id
+    );
+
+    document.getElementById(
+        "modalImage"
+    ).src = product.image;
+
+    document.getElementById(
+        "modalName"
+    ).textContent =
+    product.name;
+
+    document.getElementById(
+        "modalCategory"
+    ).textContent =
+    "Category: " +
+    product.category;
+
+    document.getElementById(
+        "modalRating"
+    ).textContent =
+    "Rating: " +
+    "⭐".repeat(product.rating);
+
+    document.getElementById(
+        "modalStock"
+    ).textContent =
+    "Stock: " +
+    product.stock;
+
+    document.getElementById(
+        "modalPrice"
+    ).textContent =
+    "$" +
+    product.price;
+
+    document.getElementById(
+        "modalCartBtn"
+    ).onclick = () => {
+
+        addToCart(id);
+
+        closeModal();
+
+    };
+
+    document.getElementById(
+        "productModal"
+    ).classList.remove(
+        "closing"
+    );
+
+    document.getElementById(
+        "productModal"
+    ).style.display = "flex";
+
+    document.getElementById(
+        "modalDescription"
+    ).textContent =
+    product.description;
+}
+
+function closeModal(){
+
+    const modal =
+    document.getElementById(
+        "productModal"
+    );
+
+    modal.classList.add(
+        "closing"
+    );
+
+    setTimeout(() => {
+
+        modal.style.display =
+        "none";
+
+        modal.classList.remove(
+            "closing"
+        );
+
+    }, 200);
+
 }
 
 function updateCart(){
@@ -405,18 +525,14 @@ function toggleCart(){
     }else{
         btn.innerHTML = "✕";
     }
-
 }
-
 
 renderProducts();
 updateCart();
 
-
 document.getElementById(
 "wishlistCount"
 ).textContent = wishlist.length;
-
 
 document
 .getElementById("sort")
@@ -424,3 +540,33 @@ document
 "change",
 renderProducts
 );
+
+window.onclick = function(event){
+    const modal =
+    document.getElementById(
+        "productModal"
+    );
+    if(event.target === modal){
+        closeModal();
+    }
+}
+
+function showToast(message){
+
+    const toast =
+    document.getElementById("toast");
+
+    toast.textContent =
+    message;
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+
+        toast.classList.remove(
+            "show"
+        );
+
+    }, 2500);
+
+}
