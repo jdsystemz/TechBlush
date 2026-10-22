@@ -277,7 +277,13 @@ function renderProducts(){
         </div>
 
         <div class="price">
-        ₱${product.price}
+        ₱${product.price.toLocaleString(
+            "en-PH",
+            {
+                minimumFractionDigits:2,
+                maximumFractionDigits:2
+            }
+        )}
         </div>
 
         <div class="actions">
@@ -388,7 +394,13 @@ function openModal(id){
         "modalPrice"
     ).textContent =
     "₱" +
-    product.price;
+    product.price.toLocaleString(
+        "en-PH",
+        {
+            minimumFractionDigits:2,
+            maximumFractionDigits:2
+        }
+    );
 
     document.getElementById(
         "modalCartBtn"
@@ -481,7 +493,13 @@ function openCheckout(){
                 </div>
 
                 <div class="checkout-bottom">
-                    ₱${product.price}
+                    ₱${product.price.toLocaleString(
+                        "en-PH",
+                        {
+                            minimumFractionDigits:2,
+                            maximumFractionDigits:2
+                        }
+                    )}
                     ×
                     ${qty}
                 </div>
@@ -530,7 +548,13 @@ function openCheckout(){
     document.getElementById(
         "checkoutSubtotal"
     ).textContent =
-    subtotal.toFixed(2);
+    subtotal.toLocaleString(
+        "en-PH",
+        {
+            minimumFractionDigits:2,
+            maximumFractionDigits:2
+        }
+    );
 
     document.getElementById(
         "checkoutDiscount"
@@ -540,7 +564,13 @@ function openCheckout(){
     document.getElementById(
         "checkoutTotal"
     ).textContent =
-    total.toFixed(2);
+    total.toLocaleString(
+        "en-PH",
+        {
+            minimumFractionDigits:2,
+            maximumFractionDigits:2
+        }
+    );
 
     document.getElementById(
         "checkoutPromoCode"
@@ -555,7 +585,13 @@ function openCheckout(){
     document.getElementById(
         "checkoutSavings"
     ).textContent =
-    savings.toFixed(2);
+    savings.toLocaleString(
+        "en-PH",
+        {
+            minimumFractionDigits:2,
+            maximumFractionDigits:2
+        }
+    );
 
     document.getElementById(
         "checkoutModal"
@@ -671,7 +707,13 @@ function updateCart(){
 
                 <br>
 
-                ₱${product.price}
+                ₱${product.price.toLocaleString(
+                    "en-PH",
+                    {
+                        minimumFractionDigits:2,
+                        maximumFractionDigits:2
+                    }
+                )}
 
             </div>
 
@@ -701,7 +743,14 @@ function updateCart(){
 
     document.getElementById(
         "total"
-    ).textContent = total.toFixed(2);
+    ).textContent =
+    total.toLocaleString(
+        "en-PH",
+        {
+            minimumFractionDigits:2,
+            maximumFractionDigits:2
+        }
+    );
 }
 
 document
